@@ -30,7 +30,7 @@ def print_title(year: str, day: str, title: str):
     print(f" Day {day} - {title} \n{COLOR_CLEAR}")
 
 
-# print question and answer
+# question and answer printer
 def print_question_answer(q: str, a: str):
     print(f"{COLOR_QUESTION}{q}", end="",)
     print(f"{COLOR_ANSWER} {str(a)} \n {COLOR_CLEAR}")
