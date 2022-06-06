@@ -7,7 +7,7 @@
 import os
 
 
-# colors for print statements
+# color constants for print statements
 COLOR_HEADER = "\033[95m" + "\033[1m"
 COLOR_QUESTION = "\033[94m"
 COLOR_ANSWER = "\033[92m"
