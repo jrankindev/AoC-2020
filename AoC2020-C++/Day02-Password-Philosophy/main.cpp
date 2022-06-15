@@ -59,7 +59,7 @@ int main()
 
         // count occurences of ruleLetter in password and compare it to min and max rules
         int ruleLetterOccurences = 0;
-        for (int i = 0; i < password.size(); i++)
+        for (unsigned int i = 0; i < password.size(); i++)
         {
             if (password[i] == ruleLetterChar)
             {
