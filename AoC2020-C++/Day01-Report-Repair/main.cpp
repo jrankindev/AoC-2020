@@ -32,18 +32,26 @@ int main()
     // open puzzle file and store lines in vector
     std::vector<int> puzzleVector;
     std::ifstream file(PUZZLE_INPUT);
-    if (file.is_open()) {
+    if (file.is_open())
+    {
         std::string line;
-        while (getline(file, line)) { puzzleVector.push_back(stoi(line)); }
+        while (getline(file, line))
+        {
+            puzzleVector.push_back(stoi(line));
+        }
     }
     file.close();
 
     // * puzzle part 1
     // loop through puzzle input finding entries that match 2020 - entry
     std::vector<int> entries;
-    for (int element : puzzleVector) {
+    for (int element : puzzleVector)
+    {
         int searcher = 2020 - element;
-        if (find(puzzleVector.begin(), puzzleVector.end(), searcher) != puzzleVector.end()) { entries.push_back(element); }
+        if (find(puzzleVector.begin(), puzzleVector.end(), searcher) != puzzleVector.end())
+        {
+            entries.push_back(element);
+        }
     }
 
     // calc answer
@@ -57,12 +65,16 @@ int main()
     // loop through puzzle input twice on different numbers finding entries that
     // match 2020 for both entries
     entries.clear();
-    for (int element : puzzleVector) {
-        for (int innerElement : puzzleVector) {
-            if (element != innerElement) {
+    for (int element : puzzleVector)
+    {
+        for (int innerElement : puzzleVector)
+        {
+            if (element != innerElement)
+            {
                 int elementSum = element + innerElement;
                 int searcher = 2020 - elementSum;
-                if (find(puzzleVector.begin(), puzzleVector.end(), searcher) != puzzleVector.end() && find(puzzleVector.begin(), puzzleVector.end(), innerElement) != puzzleVector.end()) {
+                if (find(puzzleVector.begin(), puzzleVector.end(), searcher) != puzzleVector.end() && find(puzzleVector.begin(), puzzleVector.end(), innerElement) != puzzleVector.end())
+                {
                     entries.push_back(element);
                     entries.push_back(innerElement);
                     entries.push_back(searcher);
@@ -76,7 +88,8 @@ int main()
 
     // print question and answer
     std::cout << COLOR_QUESTION << "\nIn your expense report, what is the product of the three entries that sum to 2020? " << COLOR_CLEAR;
-    std::cout << COLOR_ANSWER << answer << "\n" << COLOR_CLEAR << std::endl;
+    std::cout << COLOR_ANSWER << answer << "\n"
+              << COLOR_CLEAR << std::endl;
 
     return 0;
 }

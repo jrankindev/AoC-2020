@@ -31,7 +31,8 @@ int main()
     // open puzzle file and store lines in vector
     std::vector<std::string> puzzleVector;
     std::ifstream file(PUZZLE_INPUT);
-    if (file.is_open()) {
+    if (file.is_open())
+    {
         std::string line;
         while (getline(file, line))
             puzzleVector.push_back(line);
@@ -42,7 +43,8 @@ int main()
     // loop through each line and split out policy rules from password
     // then check if password is correct and if so, add it to correctCount
     int correctCount = 0;
-    for (auto line : puzzleVector) {
+    for (auto line : puzzleVector)
+    {
         // split out password rules and password from string using string manip
         int lineLength = line.length();
         // split out password
@@ -57,10 +59,17 @@ int main()
 
         // count occurences of ruleLetter in password and compare it to min and max rules
         int ruleLetterOccurences = 0;
-        for (int i = 0; i < password.size(); i++) {
-            if (password[i] == ruleLetterChar) { ruleLetterOccurences++; }
+        for (int i = 0; i < password.size(); i++)
+        {
+            if (password[i] == ruleLetterChar)
+            {
+                ruleLetterOccurences++;
+            }
         }
-        if (ruleLetterOccurences >= minUses && ruleLetterOccurences <= maxUses) { correctCount++; }
+        if (ruleLetterOccurences >= minUses && ruleLetterOccurences <= maxUses)
+        {
+            correctCount++;
+        }
     }
 
     // print question and answer
@@ -71,7 +80,8 @@ int main()
     // loop through each line and split out new policy rules from password
     // check if password is correct and if so, add it to correctCount
     correctCount = 0;
-    for (auto line : puzzleVector) {
+    for (auto line : puzzleVector)
+    {
         // split out password rules and password from string using string manip
         int lineLength = line.length();
         // split out password
@@ -85,14 +95,16 @@ int main()
         int secondPosition = stoi(maxCut.erase(maxCut.find(' '), maxCut.length()));
 
         // check ruleLetterChar positions against new rules
-        if ((password[firstPosition - 1] == ruleLetterChar && password[secondPosition - 1] != ruleLetterChar) || (password[firstPosition - 1] != ruleLetterChar && password[secondPosition - 1] == ruleLetterChar)) {
+        if ((password[firstPosition - 1] == ruleLetterChar && password[secondPosition - 1] != ruleLetterChar) || (password[firstPosition - 1] != ruleLetterChar && password[secondPosition - 1] == ruleLetterChar))
+        {
             correctCount++;
         }
     }
 
     // print question and answer
     std::cout << COLOR_QUESTION << "\nHow many passwords are valid according to the new interpretation of the policies? " << COLOR_CLEAR;
-    std::cout << COLOR_ANSWER << correctCount << "\n" << COLOR_CLEAR << std::endl;
+    std::cout << COLOR_ANSWER << correctCount << "\n"
+              << COLOR_CLEAR << std::endl;
 
     return 0;
 }
