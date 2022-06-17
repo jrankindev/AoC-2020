@@ -1,82 +1,102 @@
-""" * ADVENT OF CODE 2020 - DAY 3 - TOBOGGAN TRAJECTORY * """
+### ADVENT OF CODE 2020 DAY 3 TOBOGGAN TRAJECTORY ###
 
 
-# * ------------ PRE-PUZZLE CODE ------------ *
-
-# imports
-from os import system
+import os
 import math
 
-# clear screen for readability
-system("cls")
 
-# the input file we are using for this puzzle
-PUZZLE_FILE_INPUT = "pi.txt"
-
-# colors for print statements
+# color constants for print statements
 COLOR_HEADER = "\033[95m" + "\033[1m"
 COLOR_QUESTION = "\033[94m"
 COLOR_ANSWER = "\033[92m"
 COLOR_CLEAR = "\033[0m"
 
-# write title and day
-print(f"{COLOR_HEADER} Advent of Code 2020 ")
-print(f" Day 3 - Toboggan Trajectory \n{COLOR_CLEAR}")
 
-# grab puzzle input and store in list
-puzzle_input = []
-with open(PUZZLE_FILE_INPUT, encoding="UTF-8") as file:
-    for line in file:
-        line = line.strip()
-        puzzle_input.append(line)
+## * input loader
+# return_type 1 is to load into list, otherwise load in variable
+# line_type 1 is to load each line as an string, otherwise load as int
+def load_puzzle_input(puzzle_file_input: str, return_type=1, line_type=1):
+    if return_type:
+        puzzle_input = []
+        with open(puzzle_file_input, encoding="UTF-8") as file:
+            for line in file:
+                if line_type:
+                    line = line.strip()
+                else:
+                    line = int(line.strip())
+                puzzle_input.append(line)
+        return puzzle_input
+    else:
+        with open(puzzle_file_input, encoding="UTF-8") as file:
+            puzzle_input = file.read()
+        return puzzle_input
 
 
-# * ------------ PUZZLE PART 1 ------------ *
+## * title printer
+def print_title(year: str, day: str, title: str):
+    print(f"{COLOR_HEADER} Advent of Code {year} ")
+    print(f" Day {day} - {title} \n{COLOR_CLEAR}")
 
 
-def find_trees(rise, run):
-    """function to calculate how many trees you would hit in a given slope"""
+## * question and answer printer
+def print_question_answer(question: str, answer: str):
+    print(
+        f"{COLOR_QUESTION}{question}", end="",
+    )
+    print(f"{COLOR_ANSWER} {str(answer)} \n {COLOR_CLEAR}")
 
+
+## * calculate how many trees you would hit on the puzzle_input given a down and right value
+def find_trees(puzzle_input, right: int, down: int):
     # get width of one input line (they are all the same width)
     hill_width = len(puzzle_input[0])
 
     # count trees for given slope
     start_position = 0
     trees = 0
-    for element in puzzle_input[::rise]:  #:: is slice operator to skip by rise value
-        if (
-            element[(start_position % hill_width)] == "#"
-        ):  # modulus can be used for wrap around functionality
+    for element in puzzle_input[::down]:  # :: is slice operator to skip by down value
+        # modulus can be used for wrap around functionality
+        if element[(start_position % hill_width)] == "#":
             trees += 1
-        start_position += run
+        start_position += right
 
     return trees
 
 
-TREE_COUNT = find_trees(1, 3)
+## * main function
+def main():
+    # clear screen for readability (check to see if windows - nt)
+    os.system("cls" if os.name == "nt" else "clear")
 
-# write question and answer for part 1
-print(
-    f"{COLOR_QUESTION}Starting at the top-left corner of your map and following a slope"
-    + " of right 3 and down 1, how many trees would you encounter? ",
-    end="",
-)
-print(f"{COLOR_ANSWER} {str(TREE_COUNT)} \n {COLOR_CLEAR}")
+    # print title
+    print_title("2020", "3", "Toboggan Trajectory")
+
+    # get puzzle input
+    puzzle_input = load_puzzle_input("pi.txt")
+
+    # solve puzzle part 1 and 2 in list
+    # find_trees(puzzle_input, 3, 1)
+    tree_count_list = []
+    tree_count_list.append(find_trees(puzzle_input, 1, 1))
+    tree_count_list.append(find_trees(puzzle_input, 3, 1))
+    tree_count_list.append(find_trees(puzzle_input, 5, 1))
+    tree_count_list.append(find_trees(puzzle_input, 7, 1))
+    tree_count_list.append(find_trees(puzzle_input, 1, 2))
+
+    # part 1 print QA
+    answer = tree_count_list[1]
+    print_question_answer(
+        "Starting at the top-left corner of your map and following a slope of right 3 and down 1, how many trees would you encounter? ",
+        answer,
+    )
+
+    # solve part 2 and print QA
+    answer = str(math.prod(tree_count_list))
+    print_question_answer(
+        "What do you get if you multiply together the number of trees encountered on each of the listed slopes? ",
+        answer,
+    )
 
 
-# * ------------ PUZZLE PART 2 ------------ *
-
-tree_count_list = []
-tree_count_list.append(find_trees(1, 1))
-tree_count_list.append(find_trees(1, 3))
-tree_count_list.append(find_trees(1, 5))
-tree_count_list.append(find_trees(1, 7))
-tree_count_list.append(find_trees(2, 1))
-
-# write question and answer for part 2
-print(
-    f"{COLOR_QUESTION}What do you get if you multiply together the number of trees"
-    + " encountered on each of the listed slopes? ",
-    end="",
-)
-print(f"{COLOR_ANSWER} {str(math.prod(tree_count_list))} \n {COLOR_CLEAR}")
+if __name__ == "__main__":
+    main()
