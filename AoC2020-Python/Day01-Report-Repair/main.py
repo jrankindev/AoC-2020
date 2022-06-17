@@ -97,7 +97,7 @@ def main():
     # solve part 2 and print QA
     answer = puzzle_part_2(puzzle_input)
     print_question_answer(
-        "In your expense report, what is the product of the three entries that sum to 2020?",
+        "In your expense report, what is the product of the three entries that sum to 2020? ",
         answer,
     )
 

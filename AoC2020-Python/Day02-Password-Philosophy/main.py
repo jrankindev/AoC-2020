@@ -111,14 +111,14 @@ def main():
     # solve part 1 and print QA
     answer = puzzle_part_1(puzzle_input)
     print_question_answer(
-        "Find the two entries that sum to 2020; what do you get if you multiply them together? ",
+        "How many passwords are valid according to their policies? ",
         answer,
     )
 
     # solve part 2 and print QA
     answer = puzzle_part_2(puzzle_input)
     print_question_answer(
-        "In your expense report, what is the product of the three entries that sum to 2020?",
+        "How many passwords are valid according to the new interpretation of the policies? ",
         answer,
     )
 
