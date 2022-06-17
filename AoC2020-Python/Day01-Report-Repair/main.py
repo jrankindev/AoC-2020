@@ -1,8 +1,5 @@
-"""
----   ADVENT OF CODE 2020
----   DAY 1
----   REPORT REPAIR
-"""
+### ADVENT OF CODE 2020 DAY 1 REPORT REPAIR ###
+
 
 import os
 
@@ -14,8 +11,8 @@ COLOR_ANSWER = "\033[92m"
 COLOR_CLEAR = "\033[0m"
 
 
+## * input loader
 def load_puzzle_input(puzzle_file_input: str):
-    """puzzle input function"""
     puzzle_input = []
     with open(puzzle_file_input, encoding="UTF-8") as file:
         for line in file:
@@ -24,22 +21,22 @@ def load_puzzle_input(puzzle_file_input: str):
     return puzzle_input
 
 
+## * title printer
 def print_title(year: str, day: str, title: str):
-    """title printer"""
     print(f"{COLOR_HEADER} Advent of Code {year} ")
     print(f" Day {day} - {title} \n{COLOR_CLEAR}")
 
 
+## * question and answer printer
 def print_question_answer(question: str, answer: str):
-    """question and answer printer"""
     print(
         f"{COLOR_QUESTION}{question}", end="",
     )
     print(f"{COLOR_ANSWER} {str(answer)} \n {COLOR_CLEAR}")
 
 
+## * puzzle part 1
 def puzzle_part_1(puzzle_input):
-    """puzzle part 1"""
     # loop through puzzle input finding entries that match 2020 - entry
     entries = []
     for element in puzzle_input:
@@ -51,8 +48,8 @@ def puzzle_part_1(puzzle_input):
     return entries[0] * entries[1]
 
 
+## * puzzle part 2
 def puzzle_part_2(puzzle_input):
-    """puzzle part 2"""
     # loop through puzzle input twice on different numbers finding entries that
     # match 2020 for both entries
     entries = []
@@ -70,8 +67,8 @@ def puzzle_part_2(puzzle_input):
     return entries[0] * entries[1] * entries[2]
 
 
+## * main function
 def main():
-    """main function"""
     # clear screen for readability (check to see if windows - nt)
     os.system("cls" if os.name == "nt" else "clear")
 
@@ -84,16 +81,14 @@ def main():
     # solve part 1 and print QA
     answer = puzzle_part_1(puzzle_input)
     print_question_answer(
-        "Find the two entries that sum to 2020; what do you get if"
-        + " you multiply them together? ",
+        "Find the two entries that sum to 2020; what do you get if you multiply them together? ",
         answer,
     )
 
     # solve part 2 and print QA
     answer = puzzle_part_2(puzzle_input)
     print_question_answer(
-        "In your expense report, what is the product of the three entries"
-        + " that sum to 2020?",
+        "In your expense report, what is the product of the three entries that sum to 2020?",
         answer,
     )
 
