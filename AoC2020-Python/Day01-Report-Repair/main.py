@@ -28,6 +28,7 @@ def load_puzzle_input(puzzle_file_input: str, return_type=1, line_type=1):
     else:
         with open(puzzle_file_input, encoding="UTF-8") as file:
             puzzle_input = file.read()
+        return puzzle_input
 
 
 ## * title printer
