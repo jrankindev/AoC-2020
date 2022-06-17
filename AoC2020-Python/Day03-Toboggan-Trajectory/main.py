@@ -75,7 +75,6 @@ def main():
     puzzle_input = load_puzzle_input("pi.txt")
 
     # solve puzzle part 1 and 2 in list
-    # find_trees(puzzle_input, 3, 1)
     tree_count_list = []
     tree_count_list.append(find_trees(puzzle_input, 1, 1))
     tree_count_list.append(find_trees(puzzle_input, 3, 1))
