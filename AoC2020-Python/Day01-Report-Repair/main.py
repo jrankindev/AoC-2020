@@ -12,13 +12,22 @@ COLOR_CLEAR = "\033[0m"
 
 
 ## * input loader
-def load_puzzle_input(puzzle_file_input: str):
-    puzzle_input = []
-    with open(puzzle_file_input, encoding="UTF-8") as file:
-        for line in file:
-            line = int(line.strip())
-            puzzle_input.append(line)
-    return puzzle_input
+# return_type 1 is to load into list, otherwise load in variable
+# line_type 1 is to load each line as an int, otherwise load as string
+def load_puzzle_input(puzzle_file_input: str, return_type=1, line_type=1):
+    if return_type:
+        puzzle_input = []
+        with open(puzzle_file_input, encoding="UTF-8") as file:
+            for line in file:
+                if line_type:
+                    line = int(line.strip())
+                else:
+                    line = line.strip()
+                puzzle_input.append(line)
+        return puzzle_input
+    else:
+        with open(puzzle_file_input, encoding="UTF-8") as file:
+            puzzle_input = file.read()
 
 
 ## * title printer
