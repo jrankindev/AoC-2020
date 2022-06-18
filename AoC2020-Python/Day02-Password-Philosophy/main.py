@@ -4,13 +4,6 @@
 import os
 
 
-# color constants for print statements
-COLOR_HEADER = "\033[95m" + "\033[1m"
-COLOR_QUESTION = "\033[94m"
-COLOR_ANSWER = "\033[92m"
-COLOR_CLEAR = "\033[0m"
-
-
 ## * input loader
 # return_type 1 is to load into list, otherwise load in variable
 # line_type 1 is to load each line as an string, otherwise load as int
@@ -33,16 +26,22 @@ def load_puzzle_input(puzzle_file_input: str, return_type=1, line_type=1):
 
 ## * title printer
 def print_title(year: str, day: str, title: str):
-    print(f"{COLOR_HEADER} Advent of Code {year} ")
-    print(f" Day {day} - {title} \n{COLOR_CLEAR}")
+    color_header = "\033[95m" + "\033[1m"
+    color_clear = "\033[0m"
+    print(f"{color_header} Advent of Code {year} ")
+    print(f" Day {day} - {title} \n{color_clear}")
 
 
 ## * question and answer printer
 def print_question_answer(question: str, answer: str):
+    color_question = "\033[94m"
+    color_answer = "\033[92m"
+    color_clear = "\033[0m"
     print(
-        f"{COLOR_QUESTION}{question}", end="",
+        f"{color_question}{question}",
+        end="",
     )
-    print(f"{COLOR_ANSWER} {str(answer)} \n {COLOR_CLEAR}")
+    print(f"{color_answer} {str(answer)} \n {color_clear}")
 
 
 ## * puzzle part 1
