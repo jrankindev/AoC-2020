@@ -9,7 +9,7 @@ def puzzle_part_1(puzzle_input, preamble):
     # loop through every line of the puzzle input
     good_input_found = False
     bad_input = []
-    for i, line in enumerate(puzzle_input):
+    for i in range(len(puzzle_input)):
 
         # if line is not in the preamble
         if i > preamble:
@@ -42,6 +42,24 @@ def puzzle_part_1(puzzle_input, preamble):
     return bad_input
 
 
+## * puzzle part 2
+def puzzle_part_2(puzzle_input, solution):
+    # loop through puzzle input tracking index
+    for x in range(len(puzzle_input)):
+
+        # create a blank list for tracking current number sequence
+        working_list = []
+
+        # loop through each element in puzzle input starting at index x
+        # add the current element to the working list and then sum all values in the working list
+        # compare the sum to the solution, it match, return working list as correct sequence
+        for element in puzzle_input[x:]:
+            working_list.append(int(element))
+            current_sum = sum(working_list)
+            if current_sum == int(solution) and len(working_list) >= 2:
+                return working_list
+
+
 ## * main function
 def main():
     # print title
@@ -51,13 +69,15 @@ def main():
     puzzle_input = helper.load_puzzle_input("inputs/day09/pi.txt")
 
     # solve part 1 and print QA
-    answer = puzzle_part_1(puzzle_input, 25)
+    answer = puzzle_part_1(puzzle_input, 25)[0]
     helper.print_question_answer(
-        "What is the first number that does not have this property? ", answer[0],
+        "What is the first number that does not have this property? ", answer,
     )
 
     # solve part 2 and print QA
-    answer = 0
+    number_sequence = puzzle_part_2(puzzle_input, answer)
+    number_sequence.sort()
+    answer = number_sequence[0] + number_sequence[-1]
     helper.print_question_answer(
         "What is the encryption weakness in your XMAS-encrypted list of numbers? ",
         answer,
