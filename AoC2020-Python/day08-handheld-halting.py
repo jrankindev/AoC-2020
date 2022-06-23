@@ -1,47 +1,7 @@
 ### ADVENT OF CODE 2020 DAY 8 HANDHELD HALTING ###
 
 
-import os
-
-
-## * input loader
-# return_type 1 is to load into list, otherwise load in variable
-# line_type 1 is to load each line as an string, otherwise load as int
-def load_puzzle_input(puzzle_file_input: str, return_type=1, line_type=1):
-    if return_type:
-        puzzle_input = []
-        with open(puzzle_file_input, encoding="UTF-8") as file:
-            for line in file:
-                if line_type:
-                    line = line.strip()
-                else:
-                    line = int(line.strip())
-                puzzle_input.append(line)
-        return puzzle_input
-    else:
-        with open(puzzle_file_input, encoding="UTF-8") as file:
-            puzzle_input = file.read()
-        return puzzle_input
-
-
-## * title printer
-def print_title(year: str, day: str, title: str):
-    color_header = "\033[95m" + "\033[1m"
-    color_clear = "\033[0m"
-    print(f"{color_header} Advent of Code {year} ")
-    print(f" Day {day} - {title} \n{color_clear}")
-
-
-## * question and answer printer
-def print_question_answer(question: str, answer: str):
-    color_question = "\033[94m"
-    color_answer = "\033[92m"
-    color_clear = "\033[0m"
-    print(
-        f"{color_question}{question}",
-        end="",
-    )
-    print(f"{color_answer} {str(answer)} \n {color_clear}")
+import helper.helper as helper
 
 
 ## * puzzle part 1
@@ -50,7 +10,7 @@ def puzzle_part_1(puzzle_input):
     # then check that position has not been seen before
     # then pull instruction and values from the current input line position
     # then run instruction
-    global accumulator, previous_positions, position, loop_detected
+    global previous_positions, position, loop_detected
 
     if position >= len(puzzle_input):
         loop_detected = False
@@ -134,14 +94,11 @@ def swap_instruction(input_line):
 
 ## * main function
 def main():
-    # clear screen for readability (check to see if windows - nt)
-    os.system("cls" if os.name == "nt" else "clear")
-
     # print title
-    print_title("2020", "8", "Handheld Halting")
+    helper.print_title("2020", "8", "Handheld Halting")
 
     # get puzzle input
-    puzzle_input = load_puzzle_input("pi.txt")
+    puzzle_input = helper.load_puzzle_input("inputs/day08/pi.txt")
 
     # solve part 1 and print QA
     global accumulator, previous_positions, position, loop_detected
@@ -150,14 +107,14 @@ def main():
     position = 0
     loop_detected = False
     puzzle_part_1(puzzle_input)
-    print_question_answer(
+    helper.print_question_answer(
         "Immediately before any instruction is executed a second time, what value is in the accumulator? ",
         accumulator,
     )
 
     # solve part 2 and print QA
     puzzle_part_2(puzzle_input)
-    print_question_answer(
+    helper.print_question_answer(
         "What is the value of the accumulator after the program terminates? ",
         accumulator,
     )
