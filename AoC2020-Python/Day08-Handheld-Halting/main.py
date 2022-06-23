@@ -150,7 +150,6 @@ def main():
     position = 0
     loop_detected = False
     puzzle_part_1(puzzle_input)
-    print(loop_detected)
     print_question_answer(
         "Immediately before any instruction is executed a second time, what value is in the accumulator? ",
         accumulator,
