@@ -2,7 +2,6 @@
 
 
 import os
-from turtle import pos
 
 
 ## * input loader
