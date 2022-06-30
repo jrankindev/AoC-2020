@@ -36,5 +36,9 @@
 *.out
 *.app
 main
+day01-report-repair
+day02-password-philosophy
+day03-toboggan-trajectory
+day04-passport-processing
 
 # End of https://www.toptal.com/developers/gitignore/api/c++
