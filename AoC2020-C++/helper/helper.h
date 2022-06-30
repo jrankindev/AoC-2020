@@ -2,13 +2,14 @@
 
 #include <fstream>
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <vector>
 
 class helper {
    public:
-    // * input loader int
-    static std::vector<int> loadPuzzleInput(std::string puzzleInputFile) {
+    // * input loader int vector
+    static std::vector<int> loadPuzzleInputVec(std::string puzzleInputFile) {
         // open puzzle file and store lines in vector
         std::vector<int> puzzleVector;
         std::ifstream file(puzzleInputFile);
@@ -23,8 +24,8 @@ class helper {
         return puzzleVector;
     }
 
-    // * input loader string
-    static std::vector<std::string> loadPuzzleInputString(std::string puzzleInputFile) {
+    // * input loader string vector
+    static std::vector<std::string> loadPuzzleInputStringVec(std::string puzzleInputFile) {
         // open puzzle file and store lines in vector
         std::vector<std::string> puzzleVector;
         std::ifstream file(puzzleInputFile);
@@ -36,6 +37,17 @@ class helper {
         file.close();
 
         return puzzleVector;
+    }
+
+    // * input loader string
+    static std::string loadPuzzleInputString(std::string puzzleInputFile) {
+        // open puzzle file and store in string
+        std::ifstream file(puzzleInputFile);
+        std::stringstream buffer;
+        buffer << file.rdbuf();
+        std::string puzzleString = buffer.str();
+
+        return puzzleString;
     }
 
     // * title printer
