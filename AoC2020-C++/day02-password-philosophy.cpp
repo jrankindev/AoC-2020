@@ -70,7 +70,7 @@ int puzzlePart2(std::vector<std::string> puzzleVector) {
 
 int main() {
     // print title
-    helper::printTitle("2020", "1", "Report Repair");
+    helper::printTitle("2020", "2", "Passport Philosophy");
 
     // load puzzle input
     std::vector<std::string> puzzleVector = helper::loadPuzzleInputString("inputs/day02/pi.txt");
