@@ -21,6 +21,7 @@ int findTrees(std::vector<std::string> hillVector, int right, int down) {
     return trees;
 }
 
+// * main function
 int main() {
     // print title
     helper::printTitle("2020", "3", "Toboggan Trajectory");

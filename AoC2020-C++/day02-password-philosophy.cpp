@@ -68,6 +68,7 @@ int puzzlePart2(std::vector<std::string> puzzleVector) {
     return correctCount;
 }
 
+// * main function
 int main() {
     // print title
     helper::printTitle("2020", "2", "Passport Philosophy");
