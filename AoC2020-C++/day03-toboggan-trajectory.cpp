@@ -27,7 +27,7 @@ int main() {
     helper::printTitle("2020", "3", "Toboggan Trajectory");
 
     // load puzzle input
-    std::vector<std::string> puzzleVector = helper::loadPuzzleInputString("inputs/day03/pi.txt");
+    std::vector<std::string> puzzleVector = helper::loadPuzzleInputStringVec("inputs/day03/pi.txt");
 
     // solve part 1
     int answer = findTrees(puzzleVector, 3, 1);

@@ -74,7 +74,7 @@ int main() {
     helper::printTitle("2020", "2", "Passport Philosophy");
 
     // load puzzle input
-    std::vector<std::string> puzzleVector = helper::loadPuzzleInputString("inputs/day02/pi.txt");
+    std::vector<std::string> puzzleVector = helper::loadPuzzleInputStringVec("inputs/day02/pi.txt");
 
     // solve part 1
     int answer = puzzlePart1(puzzleVector);

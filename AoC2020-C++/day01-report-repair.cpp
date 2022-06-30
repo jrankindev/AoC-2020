@@ -52,7 +52,7 @@ int main() {
     helper::printTitle("2020", "1", "Report Repair");
 
     // load puzzle input
-    std::vector<int> puzzleVector = helper::loadPuzzleInput("inputs/day01/pi.txt");
+    std::vector<int> puzzleVector = helper::loadPuzzleInputVec("inputs/day01/pi.txt");
 
     // solve part 1
     int answer = puzzlePart1(puzzleVector);
