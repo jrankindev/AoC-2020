@@ -7,7 +7,7 @@
 
 class helper {
    public:
-    // * input loader
+    // * input loader int
     static std::vector<int> loadPuzzleInput(std::string puzzleInputFile) {
         // open puzzle file and store lines in vector
         std::vector<int> puzzleVector;
@@ -17,6 +17,21 @@ class helper {
             while (getline(file, line)) {
                 puzzleVector.push_back(stoi(line));
             }
+        }
+        file.close();
+
+        return puzzleVector;
+    }
+
+    // * input loader string
+    static std::vector<std::string> loadPuzzleInputString(std::string puzzleInputFile) {
+        // open puzzle file and store lines in vector
+        std::vector<std::string> puzzleVector;
+        std::ifstream file(puzzleInputFile);
+        if (file.is_open()) {
+            std::string line;
+            while (getline(file, line))
+                puzzleVector.push_back(line);
         }
         file.close();
 
