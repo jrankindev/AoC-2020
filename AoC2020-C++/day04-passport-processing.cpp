@@ -1,6 +1,5 @@
 // * ADVENT OF CODE 2020 - DAY 4 - PASSPORT PROCESSING *
 
-#include <algorithm>
 #include <regex>
 
 #include "helper/helper.h"
